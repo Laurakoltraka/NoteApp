@@ -1,0 +1,24 @@
+.logout{
+    background: none;
+    border: 0px;
+    color: white;
+    font-size: 25px;
+}
+.logout:hover{
+    background: none;
+    border: 0px;
+    color: white;
+    
+}
+.header{
+    display: flex;
+    justify-content:space-between ;
+    align-items: center;
+    background-color: #1F2A44;
+
+}
+.head-6{
+color: white;
+font-size: 20px;
+margin: 20px;
+}

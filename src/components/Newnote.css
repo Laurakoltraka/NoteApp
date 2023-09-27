@@ -1,0 +1,59 @@
+.container {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    padding-left: 20px;
+    padding-top: 12px;
+}
+
+.btn-note.create {
+    background-color: #71CF48;
+    border: #68C142;
+    margin-right: 20px;
+}
+
+.btn-note.create:hover {
+    background-color: #68C142;
+    color: #fff;
+}
+
+.createnote-btn {
+    display: inherit;
+    margin-right: 0px;
+    ;
+
+}
+
+.create-icon {
+    margin-left: 100px;
+    margin-bottom: 2px;
+    color: white;
+    font-size: 22px;
+}
+
+.note-form {
+    padding: 20px;
+    width: 97%;
+    margin: 10px;
+    border-radius: 0px;
+    border-top: 5px silid;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+.save-note-btn {
+    width: 150px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #71CF48;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.save-note-btn:hover {
+    background-color: #71CF48;
+    border: none;
+}
