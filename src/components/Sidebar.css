@@ -1,62 +1,69 @@
 .sidebar {
-        width: 25%;
-        background-color: #fff;
-        overflow-x: auto;
-        height: 100vh;
-        margin-top: 7px;
-        margin-left:20px ;
-        padding: 10px;
-        border-radius: 7px;
-      
-}  
-.btn-block.create{
-background-color: #71CF48; 
-height: 50px; 
-border: #68C142;  
-border-radius: 5px;
-margin-bottom: 15px;
-color:white;
-}
-.btn-block.create:hover{
-background-color: #68C142;   
-color:#fff ; 
+    width: 25%;
+    background-color: #fff;
+    overflow-x: auto;
+    height: 100vh;
+    margin-top: 7px;
+    margin-left: 20px;
+    padding: 10px;
+    border-radius: 7px;
+
 }
 
-.btn-block.btn-clicked{
+.btn-block.create {
+    background-color: #71CF48;
+    height: 50px;
+    border: #68C142;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.btn-block.create:hover {
+    background-color: #68C142;
+    color: #fff;
+}
+
+.btn-block.btn-clicked {
     background-color: #F8F8FA;
     color: black;
     border-color: #F8F8FA;
 }
-.btn-block.btn-clicked:hover{
+
+.btn-block.btn-clicked:hover {
     background-color: #F8F8FA;
     color: black;
     border-color: #F8F8FA;
 }
-.btn-block{
-    background-color: #1264A3;
-    border-color: #1264A3;
-}
-.btn-block:hover{
+
+.btn-block {
     background-color: #1264A3;
     border-color: #1264A3;
 }
 
-.create-btn{
-    display:inherit;
-    margin-right: -130px;  
-    
+.btn-block:hover {
+    background-color: #1264A3;
+    border-color: #1264A3;
 }
-.plus-icon{
+
+.create-btn {
+    display: inherit;
+    margin-right: -130px;
+
+}
+
+.plus-icon {
     margin-left: 150px;
     margin-bottom: 2px;
     color: white;
     font-size: 22px;
 }
-.folder-icon{
+
+.folder-icon {
     font-size: 30px;
 }
-.icon{
+
+.icon {
     margin-left: 250px;
     font-size: 20px;
 }
-

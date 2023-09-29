@@ -1,22 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
-import { addNote } from "../database/notes";
+import { addNote } from "../database/notesPosts";
 import { PlusOutlined, SearchOutlined , CheckOutlined} from "@ant-design/icons";
 import { Input } from "antd";
 
-import "./Newnote.css";
+import "./CreateNote.css";
 
-const NewNote = ({
-  selectedCategory,
-  setSelectedNote,
-  selectedNote,
-  notes,
-  setNotes,
-  uid,
-  setShowNoteForm,
-  showNoteForm,
-}) => {
+const NewNote = ({ notes, setNotes,selectedCategory, setSelectedNote, uid, selectedNote,setShowNoteEditor,  showNoteEditor,})=> 
+{
   const [newNote, setNewNote] = useState({
     title: "",
     description: "",
@@ -24,13 +16,13 @@ const NewNote = ({
   });
   const [searchQuery, setSearchQuery] = useState("");
 
-  const [width, setWidth] = useState("70%");
+  const [width, setWidth] = useState("100%");
 
   useEffect(() => {
     if (selectedNote) {
-      setWidth("25%");
+      setWidth("35%");
     } else {
-      setWidth("70%");
+      setWidth("100%");
     }
   }, [selectedNote]);
 
@@ -51,7 +43,7 @@ const NewNote = ({
       };
       setNotes([...notes, newNoteWithCategory]);
       setNewNote({ title: "", description: "", id: uuidv4() });
-      setShowNoteForm(false);
+      setShowNoteEditor(false);
       await addNote(newNoteWithCategory);
     }
     e.preventDefault();
@@ -66,7 +58,7 @@ const NewNote = ({
     setSearchQuery(query);
   };
 
-  const filteredNotes = notes.filter((note) => {
+  const filteredBySearchNotes = notes.filter((note) => {
     if (selectedCategory && note) {
       return (
         note.categoryId === selectedCategory.id &&
@@ -80,12 +72,12 @@ const NewNote = ({
   return (
     <>
       {selectedCategory && (
-        <div className="container m-2">
+        <div className="container m-2 ">
           <div className="d-flex align-items-center justify-content-right  mb-4 ">
             <Button
               variant="success"
               className="btn-note create"
-              onClick={() => setShowNoteForm(true)}
+              onClick={() => setShowNoteEditor(true)}
             >
               <div className="createnote-btn">
                 <span>Create Note</span>
@@ -95,7 +87,7 @@ const NewNote = ({
             <Form.Group>
               <Input
                 type="text"
-                placeholder="Search Notes"
+                placeholder="Search"
                 value={searchQuery}
                 onChange={handleSearch}
                 prefix={<SearchOutlined />}
@@ -103,7 +95,7 @@ const NewNote = ({
             </Form.Group>
           </div>
           <div>
-            {showNoteForm && (
+            {showNoteEditor && (
               <div className="d-fixed">
                 <Form onSubmit={addNewNote}>
                   <Form.Group>
@@ -135,7 +127,7 @@ const NewNote = ({
                 </Form>
               </div>
             )}
-            {filteredNotes.map((note, index) => (
+            {filteredBySearchNotes.map((note, index) => (
               <div
                 onClick={() => handleNoteClick(note)}
                 key={index}
@@ -145,6 +137,7 @@ const NewNote = ({
                   backgroundColor: "#fff",
                   borderTop: "1px solid #EFEFEF",
                   cursor: "pointer",
+                  borderRadius:"0px"
                 }}
               >
                 <h5>{note.title}</h5>

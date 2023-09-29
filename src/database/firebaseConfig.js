@@ -1,5 +1,4 @@
 
-
 import { getAuth } from "@firebase/auth";
 // import { initializeApp } from "firebase/app";
 import * as firebase from 'firebase/app'
@@ -16,7 +15,6 @@ const app = firebase.initializeApp({
     measurementId: "G-MH9YJ570KS"
   
 });
-
 
 export const db = getFirestore(app);
 export const auth = getAuth(app);

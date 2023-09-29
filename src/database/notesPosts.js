@@ -1,6 +1,6 @@
 
 
-import { db } from "./firebase";
+import { db } from "./firebaseConfig";
 import { collection, doc, addDoc, getDoc, updateDoc, deleteDoc, getDocs, query, where, } from "firebase/firestore";
 
 
@@ -30,7 +30,7 @@ export const addNote = async (note) => {
 };
 
 export const deleteNote = async (id) => {
-  console.log("Deleting note with ID:", id);
+  console.log("Deleting note", id);
   
   try {
     await deleteDoc(doc(notesCollection, id));
@@ -77,10 +77,7 @@ export const getNotesById = async (uid) => {
     const querySnapshot = await getDocs(qry);
     
     const notes = querySnapshot.docs.map((doc) => {
-      return {
-        id: doc.id,
-        ...doc.data()
-      };
+      return { id: doc.id, ...doc.data() };
     });
 
     return notes;

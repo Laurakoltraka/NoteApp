@@ -1,70 +1,117 @@
-# Getting Started with Create React App
+<<<<<<< HEAD
+## How to run your app with all the necessary details?
+   
+ 1. Clone the repository on your computer.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To clone the repository, you can use the following command:
 
-## Available Scripts
+bash
+git clone <'the URL of the repository you want to clone.'>
+​
 
-In the project directory, you can run:
 
-### `npm start`
+ 2. Navigate to the project directory
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+After cloning the repository, navigate to the project directory using the following command:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+bash
+cd repository
 
-### `npm test`
+Replace `repository` with the name of the repository you cloned.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ 2. Run the following command to install all the necessary dependencies for your react app:
 
-### `npm run build`
+bash
+npm install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Once the installation is complete, you can run your react app using the following command:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+bash
+npm start
+​
+This will start the development server and open your react app in your default web browser.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### How might you make this app more secure? How would you make this solution scale to millions of records?
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+I can ensure that my app is both secure and capable of handling a large volume of data effectively by implementing some security and scalability practices:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+ To make the app more secure we can use:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+ 1. Authentication and Autorization.
+   By implementing  robust authentication and authorization mechanisms using a secure authentication provider like Firebase Authentication we e nsure that only authorized users can access certain parts of the application.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+ 2. Secure storage.
+    Instead of storing sensitive data like user credentials or API keys in plain text , we can use a secure storage solution system. These systems are designed to protect sensitive data from unauthorized access.
 
-## Learn More
+3. Validate user input.
+   We should validate user input to ensure that it meets the exprected format and constrains.This can help to prevent SQL injection, XSS attacks, and other security vulnerabilities.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. Regular Security Audits and Updates:
+   Conducting regular security audits of your application's codebase and dependencies. Keeps all software and libraries up to date with the latest security patches.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+ To Scale millions of records we can use:
 
-### Code Splitting
+ 1. Optimize our database:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   -  Select a database system that aligns with your application's requirements, considering factors such as data structure, volume, and query patterns.
 
-### Analyzing the Bundle Size
+   -  Optimize database queries to ensure they are efficient and performant. Utilize indexes, query optimization techniques, and analyze query execution plans to enhance performance.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   -  Design the database schema in an efficient manner, ensuring it supports the application's data access patterns and minimizes redundancy while maintaining data integrity.
 
-### Making a Progressive Web App
+2. Caching:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+    -  Implement caching mechanisms to store frequently accessed data in a cache. This reduces the need to query the main database for every request.
 
-### Advanced Configuration
+   -   Utilize in-memory caches like Redis to store data in RAM, allowing for lightning-fast access compared to disk-based storage.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    - Implement strategies for cache invalidation to ensure that the cached data remains accurate and up to date.
 
-### Deployment
+3. Integrate CDN :
+    
+    Integrate with CDNs to distribute and cache static assets (images, stylesheets, scripts) closer to end-users, resulting in faster load times and reduced strain on your server.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+4. Optimize the Frontend
+  
+   -  We can write optimized frontend code by minimizing unnecessary renders, reducing redundant API calls, and utilizing efficient state management to enhance overall performance.
+=======
+# Flex Business Solutions Tech Test - Notes app
 
-### `npm run build` fails to minify
+In Flex Business Solutions, we aim to provide excellence and efficiency on all our lines of code in order to support the day-to-day activities of the company using our software solutions. In this task, you will be provided with a simple design of an app, fetching a list of products from an external source and allowing the user to search or filter among the list.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### Tech Test Overview
+We have provided below the Figma link of this task. On the main page,
+
+[FIGMA] [https://www.figma.com/file/T6hUVUDh5ihoYwQILcJDcf/React-Home-Test?type=design&node-id=0%3A1&mode=design&t=lOTjaPb3chxGqXkY-1]
+
+We love to see:
+- Functional code
+- Good design
+- Unit testing
+
+
+### Notes
+All of you work should take place inside this repository.
+
+You are free to use any packages that would help with this task
+
+You do not need to add additional security measures as part of this exercise.
+We're interested in how you break down the work and build your solution in a clean, easy-to-use, reusable and testable manner.
+
+
+## Deliverables
+You must follow the Figma design and need to add the functionality of:
+a) Create new notes
+c) Show all notes
+b) Search notes
+
+**Create a folder inside the repository and include finished screenshots of the app.**
+**Please make sure to update the readme with**:
+
+- How to run your app with all the necessary details
+- Relating to the task please add answers to the following questions;
+    1. How might you make this app more secure?
+    2. How would you make this solution scale to millions of records?
+>>>>>>> 651ecdc31adf23de70d98f662cb34bb6ee82bb4c

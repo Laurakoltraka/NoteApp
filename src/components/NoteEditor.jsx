@@ -3,58 +3,44 @@ import { Button, Form } from "react-bootstrap";
 import { DeleteFilled, CheckOutlined  } from "@ant-design/icons";
 
 
-const NoteEditor = ({
-    selectedNote,
-    handleSave,
-    handleDelete,
-    // handleCancel,
-}) => {
+const NoteEditor = ({  selectedNote ,handleSave,handleDelete}) =>
+ {
     const [editedNote, setEditedNote] = useState(selectedNote);
 
     useEffect(() => {
         setEditedNote(selectedNote);
     }, [selectedNote]);
 
-//  const onCancelEdit = () => {
-//         handleCancel();
-//     };
+
     const handleTitleChange = (title) => {
-        setEditedNote({ ...editedNote, title });
-    };
+        setEditedNote((prevNote) => ({ ...prevNote, title }));
+      };
 
-    const handleDescriptionChange = (description) => {
-        setEditedNote({ ...editedNote, description });
-    };
-
-    const onSaveNote = () => {
+      const handleDescriptionChange = (description) => {
+        setEditedNote((prevNote) => ({ ...prevNote, description }));
+      };
+    
+      const onSaveNote = () => {
         handleSave(editedNote);
-    };
-
-    const onDeleteNote = () => {
+      };
+    
+      const onDeleteNote = () => {
         handleDelete(editedNote);
-    };
+      };
 
    
 
     return (
         <div className="container m-2"
-            style={{
-                width: "100%",
-                backgroundColor: "#fff",
-                borderRadius: "8px",
-                overflowY: "auto",
-                height: "100vh",
+            style={{width: "50%", backgroundColor: "#fff", borderRadius: "8px", height: "100vh",
             }}>
             <div className="d-flex align-items-center justify-content-between mt-2">
-            <h3 style={{ fontSize: '24px' }}>Edit Note</h3>
-                {/* <Button variant="outline-secondary" onClick={onCancelEdit}>
-                    Cancel Editing
-                </Button> */}
+            <h3 style={{ fontSize: '30px' ,marginBottom:"50px"}}>Edit Note</h3>
+              
             </div>
             <Form>
                 <Form.Group>
-                    {/* <Form.Label>Title:</Form.Label> */}
-                    <Form.Control
+                   <Form.Control
                         type="text"
                         style={{borderRadius:"0px", borderTop: "3px solid #EFEFEF", borderLeft:"none",borderRight:"none",borderBottom:"none"}}
                         value={editedNote.title}
@@ -77,14 +63,14 @@ const NoteEditor = ({
                     />
                 </Form.Group>
                 <div className="d-flex align-items-center justify-content-between mt-5">
-                    <Button variant="danger" onClick={onDeleteNote}>
+                    <Button variant="danger" style={{backgroundColor:"#FE4C4A", borderStyle:"none"}} onClick={onDeleteNote}>
                         <div className="d-flex align-items-center gap-1">
                             <span>Delete Note</span>
 
                             <DeleteFilled />
                         </div>
                     </Button>
-                    <Button variant="success" onClick={onSaveNote}>
+                    <Button variant="success"  style={{backgroundColor:"#71CF48",borderStyle:"none"}} onClick={onSaveNote}>
                         <div className="d-flex align-items-center gap-1">
                             <span>Save Changes</span>
 

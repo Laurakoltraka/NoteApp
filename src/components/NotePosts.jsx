@@ -1,59 +1,68 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
-import NewNote from "./NewNote";
+import CreateNote from "./CreateNote";
 import NoteEditor from "./NoteEditor";
 import { addNewCategory, getCategoriesById } from "../database/categorieFolders";
-import { getNotesById, updateNote } from "../database/notes";
+import { getNotesById, updateNote } from "../database/notesPosts";
 import { signOut } from "@firebase/auth";
-import { auth } from "../database/firebase";
+import { auth } from "../database/firebaseConfig";
 import { v4 as uuidv4 } from "uuid";
-import './Notebook.css'
+
+import './Noteposts.css'
 
 const Notebook = ({ uid }) => {
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [selectedNote, setSelectedNote] = useState(null);
     const [notes, setNotes] = useState([]);
-    const [showNoteForm, setShowNoteForm] = useState(false);
+    const [showNoteEditor, setShowNoteEditor] = useState(false);
 
     useEffect(() => {
-        getCategoriesById(uid).then((data) => {
-            setCategories(data);
-        });
+        const fetchData = async () => {
+            const categoryData = await getCategoriesById(uid);
+            setCategories(categoryData);
+        };
+    
+        fetchData();
     }, [uid]);
-
+    
     useEffect(() => {
-        getNotesById(uid).then((data) => {
-            setNotes(data);
-        });
+        const fetchData = async () => {
+            const noteData = await getNotesById(uid);
+            setNotes(noteData);
+        };
+    
+        fetchData();
     }, [uid]);
-
- 
+    
     const onAddNewCategory = async () => {
         const newCategory = {
             id: uuidv4(),
             name: `Category `,
             uid: uid,
         };
-        setCategories([...categories, newCategory]);
+        setCategories((prevCategories) => [...prevCategories, newCategory]);
         await addNewCategory(newCategory);
-       
     };
-
+    
     const handleSave = async (note) => {
-        setNotes((prev) => prev.map((item) => (item.id === note.id ? note : item)));
+        setNotes((prevNotes) =>
+            prevNotes.map((item) => (item.id === note.id ? note : item))
+        );
         setSelectedNote();
         await updateNote(note);
     };
 
-    const handleDelete = (note) => {
-        setNotes((prev) => prev.filter((item) => item.id !== note.id));
+const handleDelete = async (note) => {
+    try {
+        setNotes((prevNotes) => prevNotes.filter((item) => item.id !== note.id));
         setSelectedNote();
-    };
+        console.log("Note deleted:", note.id);
+    } catch (error) {
+        console.error("Error deleting note:", error);
+    }
+};
 
-    const handleCancel = () => {
-        setSelectedNote(null);
-    };
 
     return (
         <>
@@ -73,25 +82,24 @@ const Notebook = ({ uid }) => {
                     setSelectedCategory={setSelectedCategory}
                     selectedCategory={selectedCategory}
                     setSelectedNote={setSelectedNote}
-                    setShowNoteForm={setShowNoteForm}
+                    setShowNoteEditor={setShowNoteEditor}
                     notes={notes}
                 />
-                <NewNote
+                <CreateNote
                     selectedCategory={selectedCategory}
                     selectedNote={selectedNote}
                     setSelectedNote={setSelectedNote}
                     notes={notes}
                     setNotes={setNotes}
                     uid={uid}
-                    showNoteForm={showNoteForm}
-                    setShowNoteForm={setShowNoteForm}
+                    showNoteEditor={showNoteEditor}
+                    setShowNoteEditor={setShowNoteEditor}
                 />
                 {selectedNote && (
                     <NoteEditor
                         selectedNote={selectedNote}
                         handleSave={handleSave}
                         handleDelete={handleDelete}
-                        handleCancel={handleCancel}
                     />
                 )}
             </div>

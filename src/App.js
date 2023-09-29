@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Notebook from "./components/Notebook";
-import Auth from "./components/Auth";
+import NotePosts from "./components/NotePosts"
+import Auth from "./components/userAuthentication";
 import { onAuthStateChanged } from "@firebase/auth";
-import { auth } from "./database/firebase";
+import { auth } from "./database/firebaseConfig";
 import './index.css'
 
 const App = () => {
@@ -21,7 +21,7 @@ const App = () => {
         });
     }, []);
     if (loading) return <div>Loading...</div>;
-    return uid ? <Notebook uid={uid} /> : <Auth />;
+    return uid ? <NotePosts uid={uid} /> : <Auth />;
 };
 
 export default App;

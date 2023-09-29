@@ -1,13 +1,6 @@
-import { db } from "./firebase";
-import {
-    addDoc,
-    collection,
-    deleteDoc,
-    getDocs,
-    query,
-    where,
-} from "firebase/firestore";
-
+import { db } from "./firebaseConfig";
+import { addDoc,getDocs, deleteDoc, query, where,collection,} from "firebase/firestore";
+    
 const categoriesCollection = collection(db, 'categories');
 
 export const getCategories = async () => {
